@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+		.container {
+			width: 70%;
+			margin: auto;
+			text-align: center;
+		}
+		.dice {
+			text-align: center;
+			display: inline-block;
+			margin: 10px;
+		}
+		body {
+			background-color: #33b313;
+			margin: 0;
+		}
+		h1 {
+			margin: 30px;
+			font-family: "Lobster", cursive;
+			text-shadow: 5px 0 #232931;
+			font-size: 4.5rem;
+			color: #a3282c;
+			text-align: center;
+		}
+		p {
+			font-size: 2rem;
+			color: #a3282c;
+			font-family: "Indie Flower", cursive;
+		}
+		img {
+			width: 100%;
+		}
+		.bottom {
+			padding-top: 30px;
+		}
+		.butn {
+			background: #a3282c;
+			font-family: "Indie Flower", cursive;
+			border-radius: 7px;
+			color: #ffff;
+			font-size: 30px;
+			padding: 16px 25px 16px 25px;
+			text-decoration: none;
+		}
+		.butn:hover {
+			background: #232931;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Lanzar la moneda</h1>
+
+		<div class="dice">
+			<p class="Player1">Jugador 1</p>
+			<img class="img1" src="sol.png">
+		</div>
+
+	</div>
+
+    <div class="container moneda">
+        <button type="button" class="butn" 
+        onclick="escoge()">
+        Escoge
+        </button>
+    </div>
+	<div class="container bottom">
+		<button type="button" class="butn"
+			onClick="rollTheDice()">
+			Lanzar
+		</button>
+	</div>
+	<div class="container bottom">
+		<button type="button" class="butn"
+			onClick="editNames()">
+			Editar nombre
+		</button>
+	</div>
+    <script>
+        var Ganador = "moneda";
+        var player1 = "Player 1";
+
+		// Function to change the player name
+		function editNames() {
+			player1 = prompt("Cambio de nombre");
+			document.querySelector("p.Player1")
+							.innerHTML = player1;
+		}
+        function escoge(){
+            dato1 = window.prompt("Escoge aguila o sol");
+            num1 = parseInt(dato1);
+        }
+        function rollTheDice(){
+            
+            setTimeout(function(){
+                var random1 = Math.floor(Math.random() * 2) + 1;                
+                
+                document.querySelector(".img").setAttribute(random1 + ".png")           
+                if(random1 === num1){
+                    document.querySelector("h1").innerHTML
+                    =(player1 + "Gana");
+                }
+                else if (random1 <= num1) {
+                    document.querySelector("h1").innerHTML
+                    =(player1 + "Perdiste")
+                }
+
+
+            }, 2500)
+        }
+
+    </script>
+</body>
+</html>
